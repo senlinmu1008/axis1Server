@@ -6,7 +6,7 @@
         </filter>
         <encoder>
             <charset>UTF-8</charset>
-            <Pattern>%d [%level] [%X{seq}] [%thread] [%logger:%line] %m%n</Pattern>
+            <Pattern>%d [%p] [%t] [%c:%line] [%X{seq}] %m%n</Pattern>
         </encoder>
     </appender>
 
@@ -17,7 +17,7 @@
         </filter>
         <encoder>
             <charset>UTF-8</charset>
-            <pattern>%d [%level] [%X{seq}] [%thread] [%logger:%line] %m%n</pattern>
+            <pattern>%d [%p] [%t] [%c:%line] [%X{seq}] %m%n</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${user.home}/log/axis1Server.log.%d{yyyyMMdd}.gz</fileNamePattern>
