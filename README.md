@@ -1,7 +1,7 @@
-# axis1Server
+# Server搭建
 基于Axis1搭建的服务端
-## Maven导包
 
+## 1、Maven导包
 ```xml
 <dependency>
     <groupId>org.apache.axis</groupId>
@@ -30,8 +30,7 @@
 </dependency>
 ```
 
-## 在web.xml中配置axis监听器
-
+## 2、在web.xml中配置axis监听器
 ```xml
 <servlet>
     <servlet-name>AxisServlet</servlet-name>
@@ -43,8 +42,7 @@
 </servlet-mapping>
 ```
 
-## 创建前置接收请求的类
-
+## 3、创建前置接收请求的类
 ```Java
 @Slf4j
 public class Dispatcher {
@@ -66,8 +64,7 @@ public class Dispatcher {
 }
 ```
 
-## 创建对象传参的DTO(server和client共用)
-
+## 4、创建对象传参的DTO(server和client共用)
 ```Java
 @Data
 public class CommonDTO {
@@ -78,7 +75,7 @@ public class CommonDTO {
 }
 ```
 
-## 创建配置文件server-config.wsdd
+## 5、创建配置文件server-config.wsdd
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -101,14 +98,14 @@ public class CommonDTO {
 </deployment>
 ```
 
-## 启动服务
-
-url规则：`http://ip:port/contextPath/url-pattern/serviceName?wsdl`
-
-打开：`http://127.0.0.1:8080/axisServer/v1/call?wsdl`
-可以看到xml页面即为成功
+## 6、启动服务
+1. url规则：`http://ip:port/contextPath/url-pattern/serviceName?wsdl`
+2. 打开：`http://127.0.0.1:8080/axisServer/v1/call?wsdl` 可以看到xml页面即为成功。
 
 ## 说明
 
-1. 前置接收请求的类每次调用都会通过反射实例化一次
-2. 使用对象传参，在反序列化时给对象设置属性值是通过拼接set方法来实现，要求set方法无返回值，不要使用lombok的@Accessors注解
+1. 前置接收请求的类每次调用都会通过反射实例化一次。
+2. 使用对象传参，在反序列化时给对象设置属性值是通过拼接set方法来实现，要求set方法无返回值，不要使用lombok的@Accessors注解。
+3. 代码地址：
+    * github：https://github.com/senlinmu1008/axis1Server
+    * gitee：https://gitee.com/ppbin/axis1Server
